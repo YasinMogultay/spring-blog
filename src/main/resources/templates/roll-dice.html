@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('Roll The Dice Page')"></head>
+<body>
+
+<nav th:replace="fragments/navbar :: main-navbar"></nav>
+
+<div class="container-fluid">
+    <h1>Guess a number!</h1>
+
+    <a href="/roll-dice/1">1</a>
+    <a href="/roll-dice/2">2</a>
+    <a href="/roll-dice/3">3</a>
+    <a href="/roll-dice/4">4</a>
+    <a href="/roll-dice/5">5</a>
+    <a href="/roll-dice/6">6</a>
+
+    <h1 th:text="${randomNum}"></h1> <!-- Controller variable  -->
+    <h1 th:text="${userGuess}"></h1>
+    <h1 th:if="${correctGuess}">You guessed correctly</h1>
+    <h1 th:if="${wrongGuess}">You guessed incorrectly</h1>
+</div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
+</body>
+</html>

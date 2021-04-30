@@ -30,5 +30,4 @@ public class MathController {
         return "Your result is " + (a / b);
     }
 
-
 }
