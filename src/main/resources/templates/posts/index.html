@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" spring lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
-
+<h2>Posts</h2>
+<div th:each="post : ${posts}">
+    <h4 th:text="${post.id}"></h4>
+    <h4 th:text="${post.title}"></h4>
+    <h4 th:text="${post.body}"></h4>
+</div>
 </body>
 </html>
