@@ -1,40 +1,73 @@
 package com.example.demo.controller;
 
 import com.example.demo.models.Post;
+
+import com.example.demo.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PostController {
 
+    //dependency injection where we create a Repository instance and initialize it in the controller class constructor.
+    private final PostRepository postsDao;
+
+    public PostController(PostRepository postsDao) {
+        this.postsDao = postsDao;
+    }
+
     @GetMapping("/posts")
     public String postsMethod (Model model) {
-        ArrayList<Post> post = new ArrayList<>();
-        post.add(new Post(1,"First Post Title","First Post Body"));
-        post.add(new Post(2,"Second Post Title","Second Post Body"));
-        post.add(new Post(3,"Third Post Title","Third Post Body"));
-        model.addAttribute("posts", post);
+        model.addAttribute("posts", postsDao.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String postId (@PathVariable int id, Model model) {
-        Post post = new Post(id,"Post Title","Post Body");
-        model.addAttribute("id", id);
+    public String getOneId (@PathVariable long id, Model model) {
+        Post post = postsDao.getOne(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
-    @GetMapping("/posts/create")
-    public String createPost () {
-        return "FORM";
+    @GetMapping("/posts/{id}/edit")
+    public String edit (@PathVariable long id, Model model) {
+        model.addAttribute("posts", postsDao.getOne(id));
+        return "posts/edit";
     }
 
-    @PostMapping( path = "/posts/create")
-    public String postId () {
-        return "Your post will be submiting";
+    @PostMapping("/posts/{id}/edit")
+    public String update (@PathVariable long id, @RequestParam(name = "title") String title,@RequestParam(name = "body") String body) {
+        Post postToUpdate = new Post(
+                id, title, body);
+        postsDao.save(postToUpdate);
+        return "redirect:/posts";
     }
+
+    @PostMapping("/posts/{id}/delete")
+    public String delete(@PathVariable long id) {
+        postsDao.deleteById(id);
+        return "redirect:/posts";
+    }
+
+//    @PostMapping("/posts/edit")
+//    public String createPost (@RequestParam(name = "id") Long id,@RequestParam(name = "title") String title,@RequestParam(name = "body") String body, Model model) {
+//        Post updatePost = new Post(id,title,body);
+//        postsDao.save(updatePost);
+//        return "posts/edit";
+//    }
+
+//    @GetMapping("/posts/delete")
+//    public String showDeletePost () {
+//        return "posts/delete";
+//    }
+//
+//    @PostMapping("/posts/delete")
+//    public String deletePost (@RequestParam(name = "id") Long id, Model model) {
+//        postsDao.deleteById(id);
+//        return "posts/delete";
+//    }
 }

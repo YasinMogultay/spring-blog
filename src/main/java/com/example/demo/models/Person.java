@@ -1,10 +1,23 @@
 package com.example.demo.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "people")
 public class Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    public Person() {
+    }
 
     public Person(long id, String firstName, String lastName) {
         this.id = id;

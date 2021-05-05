@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: main-header('Delete Post Page')"></head>
+<body>
+<h2>Delete Page</h2>
+<form action="/posts/delete" method="post">
+    <label for="id">Post Id</label>
+    <input type="text" name="id" id="id" class="field" />
+    <button>Delete</button>
+</form>
+</body>
+</html>

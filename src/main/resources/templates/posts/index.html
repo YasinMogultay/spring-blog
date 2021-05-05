@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" spring lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
+<head th:replace="fragments/header :: main-header('Show All Posts Page')"></head>
 <body>
 <h2>Posts</h2>
-<div th:each="post : ${posts}">
-    <h4 th:text="${post.id}"></h4>
-    <h4 th:text="${post.title}"></h4>
-    <h4 th:text="${post.body}"></h4>
+<div class="card bg-primary mr-2 ml-2 mt-2 mb-2 " style="width: 18rem;">
+    <div class="card-body " th:each="post : ${posts}">
+        <h5 class="card-title">Post title <span th:text="${post.title}"</span></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Post body <span th:text="${post.body}"></span></h6>
+        <p class="card-text">Post Id <span th:text="${post.id}"></span></p>
+    </div>
 </div>
 </body>
 </html>
