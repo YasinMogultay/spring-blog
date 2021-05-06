@@ -16,6 +16,9 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private PostDetails postDetails;
+
     public Post() {
     }
 
@@ -23,6 +26,13 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(long id, String title, String body, PostDetails postDetails) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.postDetails = postDetails;
     }
 
     public Post(long id) {
@@ -51,5 +61,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
     }
 }
