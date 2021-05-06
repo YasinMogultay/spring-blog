@@ -7,9 +7,15 @@
 <body>
 
 <div>
-<h2>ID of the car : <span th:text="${post.id}"></span></h2>
-<h3>Title of the Car : <span th:text="${post.title}"></span></h3>
-<h4>Body of the Car : <span th:text="${post.body}"></span></h4>
+    <h2>ID of the car : <span th:text="${post.id}"></span></h2>
+    <h3>Title of the Car : <span th:text="${post.title}"></span></h3>
+    <h4>Body of the Car : <span th:text="${post.body}"></span></h4>
+    <h4>History of the Car : <span th:text="${post.postDetails.historyOfPost}"></span></h4> <!--    postDetails is name of the onetoOne relation-->
+</div>
+<div>
+<div th:each="image : ${post.postImages}">
+    <img th:src="${image.url}" alt="cat"/>
+</div>
 </div>
 </body>
 </html>

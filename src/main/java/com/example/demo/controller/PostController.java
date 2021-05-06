@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.models.Post;
 
+import com.example.demo.models.PostDetails;
 import com.example.demo.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,27 +54,12 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @PostMapping("/posts/edit")
-//    public String createPost (@RequestParam(name = "id") Long id,@RequestParam(name = "title") String title,@RequestParam(name = "body") String body, Model model) {
-//        Post updatePost = new Post(id,title,body);
-//        postsDao.save(updatePost);
-//        return "posts/edit";
-//    }
-
-//    @GetMapping("/posts/delete")
-//    public String showDeletePost () {
-//        return "posts/delete";
-//    }
-//
-//    @PostMapping("/posts/delete")
-//    public String deletePost (@RequestParam(name = "id") Long id, Model model) {
-//        postsDao.deleteById(id);
-//        return "posts/delete";
-//    }
-
-    @GetMapping("/posts/details")
-    public String details () {
-        System.out.println(postsDao.getOne(1L).getPostDetails().getHistoryOfPost());
-        return"redirect:/posts";
+    //reaching info from postdetails table
+    @GetMapping("/posts/details/{id}")
+    public String details (@PathVariable long id,Model model) {
+        Post post = postsDao.getOne(id);
+        model.addAttribute("post", post);
+        return"/posts/show";
     }
+
 }
