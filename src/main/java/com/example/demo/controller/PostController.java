@@ -70,4 +70,10 @@ public class PostController {
 //        postsDao.deleteById(id);
 //        return "posts/delete";
 //    }
+
+    @GetMapping("/posts/details")
+    public String details () {
+        System.out.println(postsDao.getOne(1L).getPostDetails().getHistoryOfPost());
+        return"redirect:/posts";
+    }
 }
