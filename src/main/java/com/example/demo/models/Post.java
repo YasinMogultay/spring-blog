@@ -29,12 +29,20 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", orphanRemoval = true)
     private List<PostImage> postImages;
 
+    @ManyToOne
+    private User user;
+
 
     public Post() {
     }
 
     public Post(long id, String title, String body) {
         this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
@@ -51,6 +59,13 @@ public class Post {
         this.title = title;
         this.body = body;
         this.postImages = postImages;
+    }
+
+    public Post(long id, String title, String body, User user) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.user = user;
     }
 
     public Post(long id) {
@@ -95,5 +110,13 @@ public class Post {
 
     public void setPostImages(List<PostImage> postImages) {
         this.postImages = postImages;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

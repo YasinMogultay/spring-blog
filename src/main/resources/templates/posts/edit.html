@@ -4,16 +4,6 @@
 <body>
 <h2>Edit Page</h2>
 
-<!--<form action="/posts/edit" method="post">-->
-<!--    <label for="id">Post Id</label>-->
-<!--    <input type="text" name="id" id="id" class="field" />-->
-<!--    <label for="title">Post Title</label>-->
-<!--    <input type="text" name="title" id="title" class="field" />-->
-<!--    <label for="body">Post Body</label>-->
-<!--    <input type="text" name="body" id="body" class="field" />-->
-<!--    <button>Update</button>-->
-<!--</form>-->
-
 <form th:action="'/posts/' + ${id} + '/edit'" th:method="POST">
     <label for="title">Post Title</label>
     <input type="text" name="title" id="title" class="field" th:value="${posts.title}" />

@@ -2,23 +2,24 @@ package com.example.demo.controller;
 
 import com.example.demo.models.Post;
 
-import com.example.demo.models.PostDetails;
+import com.example.demo.models.User;
 import com.example.demo.repositories.PostRepository;
+import com.example.demo.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class PostController {
 
     //dependency injection where we create a Repository instance and initialize it in the controller class constructor.
     private final PostRepository postsDao;
+    private final UserRepository usersDao;
 
-    public PostController(PostRepository postsDao) {
+
+    public PostController(PostRepository postsDao, UserRepository usersDao) {
         this.postsDao = postsDao;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/posts")
@@ -60,6 +61,21 @@ public class PostController {
         Post post = postsDao.getOne(id);
         model.addAttribute("post", post);
         return"/posts/show";
+    }
+
+    //relationships exercise
+    @GetMapping("/posts/create")
+    public String create () {
+        return"posts/create";
+    }
+
+    @PostMapping("/posts/create")
+    public String createPost(@RequestParam String title, @RequestParam String body) {
+        Post post = new Post(title,body);
+        User user = usersDao.getOne(1L); //'L' make it long data type
+        post.setUser(user);
+        postsDao.save(post);
+        return "redirect:/posts";
     }
 
 }

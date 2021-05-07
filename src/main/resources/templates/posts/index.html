@@ -8,6 +8,7 @@
         <h5 class="card-title">Post title <span th:text="${post.title}"</span></h5>
         <h6 class="card-subtitle mb-2 text-muted">Post body <span th:text="${post.body}"></span></h6>
         <p class="card-text">Post Id <span th:text="${post.id}"></span></p>
+        <h4>History of the Car : <span th:text="${post.user.email}"></span></h4> <!--    postDetails is name of the onetoOne relation-->
     </div>
 </div>
 </body>
