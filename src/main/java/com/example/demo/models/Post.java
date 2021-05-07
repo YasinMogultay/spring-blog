@@ -26,7 +26,7 @@ public class Post {
      * - the mappedBy prevents an unneeded mapping table to be created by Hibernate
      * - the orphanRemoval will automatically delete any images if they are removed from an ad
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<PostImage> postImages;
 
     @ManyToOne

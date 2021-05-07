@@ -2,9 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.models.Post;
 
-import com.example.demo.models.User;
 import com.example.demo.repositories.PostRepository;
 import com.example.demo.repositories.UserRepository;
+import com.example.demo.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +15,13 @@ public class PostController {
     //dependency injection where we create a Repository instance and initialize it in the controller class constructor.
     private final PostRepository postsDao;
     private final UserRepository usersDao;
+    private final EmailService emailService;
 
 
-    public PostController(PostRepository postsDao, UserRepository usersDao) {
+    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService) {
         this.postsDao = postsDao;
         this.usersDao = usersDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/posts")
@@ -37,15 +39,13 @@ public class PostController {
 
     @GetMapping("/posts/{id}/edit")
     public String edit (@PathVariable long id, Model model) {
-        model.addAttribute("posts", postsDao.getOne(id));
+        model.addAttribute("post", postsDao.getOne(id));
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update (@PathVariable long id, @RequestParam(name = "title") String title,@RequestParam(name = "body") String body) {
-        Post postToUpdate = new Post(
-                id, title, body);
-        postsDao.save(postToUpdate);
+    public String update (@ModelAttribute Post post) {
+        postsDao.save(post);
         return "redirect:/posts";
     }
 
@@ -63,19 +63,35 @@ public class PostController {
         return"/posts/show";
     }
 
-    //relationships exercise
+    //relationships exercise ==== my get and post mapping before Form Model Binding ====
+//    @GetMapping("/posts/create")
+//    public String create () {
+//        return"posts/create";
+//    }
+
+    //    @PostMapping("/posts/create")
+//    public String createPost(@RequestParam String title, @RequestParam String body) {
+//        Post post = new Post(title,body);
+//        User user = usersDao.getOne(1L); //'L' make it long data type
+//        post.setUser(user);
+//        postsDao.save(post);
+//        return "redirect:/posts";
+//    }
+
     @GetMapping("/posts/create")
-    public String create () {
-        return"posts/create";
+    public String showCreate(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body) {
-        Post post = new Post(title,body);
-        User user = usersDao.getOne(1L); //'L' make it long data type
-        post.setUser(user);
+    public String create(@ModelAttribute Post post) {
+        post.setUser(usersDao.getOne(1L));
         postsDao.save(post);
+        emailService.prepareAndSend(post,"string subject","string body");
         return "redirect:/posts";
     }
+
+
 
 }
