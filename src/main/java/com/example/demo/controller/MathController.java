@@ -20,13 +20,13 @@ public class MathController {
 
     @RequestMapping(path = "/multiply/{x}/and/{y}", method = RequestMethod.GET)
     @ResponseBody
-    public String multiplyMethod(@PathVariable int x,@PathVariable int y) {
+    public String multiplyMethod(@PathVariable int x, @PathVariable int y) {
         return "Your reuslt is " + (x * y);
     }
 
     @RequestMapping(path = "/divide/{a}/by/{b}", method = RequestMethod.GET)
     @ResponseBody
-    public String divideMethod(@PathVariable int a,@PathVariable int b) {
+    public String divideMethod(@PathVariable int a, @PathVariable int b) {
         return "Your result is " + (a / b);
     }
 
