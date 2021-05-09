@@ -3,17 +3,16 @@
 <head th:replace="fragments/header :: main-header('Show All Posts Page')"></head>
 <body>
 <nav th:replace="fragments/navbar :: main-navbar"></nav>
-<h2>Posts</h2>
-<div class="row">
-    <div class="card bg-primary mr-2 ml-2 mt-2 mb-2  d-flex flex-wrap" style="width: 28rem;"
-         th:each="post : ${posts}">
+<h2 class="text-center mt-1">All Posts</h2>
+<div class="row justify-content-center">
+    <div class="col-3 card border-primary bg-light mb-2 ml-2 mt-2 mr-2 d-flex flex-wrap" style="max-width: 18rem; max-height: 18rem" th:each="post : ${posts}">
+        <div class="row card-header">Post Title: <span th:text="${post.title}"></span></div>
         <div class="card-body">
-            <h5 class="card-title">Post title: <span th:text="${post.title}"</span></h5>
-            <h6 class="card-subtitle mb-2 ">Post body <span th:text="${post.body}"></span></h6>
-            <h6 class="card-subtitle mb-2 ">Post Id: <span th:text="${post.id}"></span></h6>
-            <!--        <h4>History of the Car : <span th:text="${post.user.email}"></span></h4> &lt;!&ndash;    postDetails is name of the onetoOne relation&ndash;&gt;-->
+            <h5 class="card-title">Post Body: <span th:text="${post.body}"</span></h5>
+            <h5 class="card-text">Post Id: <span th:text="${post.id}"></span></h5>
         </div>
     </div>
 </div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
 </html>

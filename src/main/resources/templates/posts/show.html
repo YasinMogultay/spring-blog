@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" spring lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Show</title>
-</head>
+<head th:replace="fragments/header :: main-header('Show Posts Page')"></head>
 <body>
-
-<div>
-    <h2>ID of the car : <span th:text="${post.id}"></span></h2>
-    <h3>Title of the Car : <span th:text="${post.title}"></span></h3>
-    <h4>Body of the Car : <span th:text="${post.body}"></span></h4>
-<!--    <h4>History of the Car : <span th:text="${post.postDetails.historyOfPost}"></span></h4> &lt;!&ndash;    postDetails is name of the onetoOne relation&ndash;&gt;-->
+<nav th:replace="fragments/navbar :: main-navbar"></nav>
+<h2 class="ml-2 text-center mb-4 mt-2">Details of Post</h2>
+<div class="row ml-2 d-flex justify-content-center ">
+    <div class="col-3 card border-primary bg-light mb-2 ml-2 mt-4 mr-2 d-flex flex-wrap" style="max-width: 28rem">
+        <div class="row card-header">Post Title: <span th:text="${post.title}"></span></div>
+        <div class="card-body">
+            <h5 class="card-title">Post Body: <span th:text="${post.body}"</span></h5>
+            <h5 class="card-text">Post Id: <span th:text="${post.id}"></span></h5>
+        </div>
+    </div>
 </div>
 <div>
-<div th:each="image : ${post.postImages}">
-    <img th:src="${image.url}" alt="cat"/>
+    <div th:each="image : ${post.postImages}">
+        <img th:src="${image.url}" alt="cat"/>
+    </div>
 </div>
-</div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
 </html>

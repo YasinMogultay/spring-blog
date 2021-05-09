@@ -4,18 +4,29 @@
 <body>
 <nav th:replace="fragments/navbar :: main-navbar"></nav>
 
-<h2>Edit Page</h2>
+<h2 class="ml-2">Edit Page</h2>
 
-<form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="POST" th:object="${post}">
-    <label for="title">Post Title</label>
-    <input type="text" name="title" id="title" th:field="*{title}"  />
-    <label for="body">Post Body</label>
-    <textarea type="text" name="body" id="body" th:field="*{body}" />
-    <button>Edit Post</button>
-</form>
-<form th:action="'/posts/' + ${id} + '/delete'" th:method="POST">
-    <button>Delete Post</button>
-</form>
-
+<!--need to use th action and th field to be able to use form model binding -->
+<div class="container-fluid">
+    <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="POST" th:object="${post}">
+        <div class="form-group">
+            <label for="title">Post Title</label>
+            <input type="title" name="title"  class="form-control" id="title" th:field="*{title}">
+            <small class="form-text text-muted">Edit your post title.</small>
+        </div>
+        <div class="form-group">
+            <label for="body">Post Body</label>
+            <textarea class="form-control" name="body" id="body" rows="3" th:field="*{body}" ></textarea>
+            <small class="form-text text-muted">Edit your post body.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="container-fluid">
+    <form class="mt-2" th:action="'/posts/' + ${id} + '/delete'" th:method="POST">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
 </html>
