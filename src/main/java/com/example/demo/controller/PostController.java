@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.SecurityConfiguration;
 import com.example.demo.models.Post;
 
+import com.example.demo.models.User;
 import com.example.demo.repositories.PostRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,7 +89,8 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String create(@ModelAttribute Post post) {
-        post.setUser(usersDao.getOne(1L));
+        User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(usersDao.getOne(author.getId()));
         postsDao.save(post);
         emailService.prepareAndSend(post,"string subject","string body");
         return "redirect:/posts";
