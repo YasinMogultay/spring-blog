@@ -58,6 +58,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
+
     //reaching info from postdetails table
     @GetMapping("/posts/details/{id}")
     public String details (@PathVariable long id,Model model) {
@@ -95,6 +96,7 @@ public class PostController {
         emailService.prepareAndSend(post,"string subject","string body");
         return "redirect:/posts";
     }
+
 
 
 
