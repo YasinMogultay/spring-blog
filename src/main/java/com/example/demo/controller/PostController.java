@@ -53,21 +53,4 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @PostMapping("/posts/edit")
-//    public String createPost (@RequestParam(name = "id") Long id,@RequestParam(name = "title") String title,@RequestParam(name = "body") String body, Model model) {
-//        Post updatePost = new Post(id,title,body);
-//        postsDao.save(updatePost);
-//        return "posts/edit";
-//    }
-
-//    @GetMapping("/posts/delete")
-//    public String showDeletePost () {
-//        return "posts/delete";
-//    }
-//
-//    @PostMapping("/posts/delete")
-//    public String deletePost (@RequestParam(name = "id") Long id, Model model) {
-//        postsDao.deleteById(id);
-//        return "posts/delete";
-//    }
 }
