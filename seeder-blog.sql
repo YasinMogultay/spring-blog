@@ -1,104 +1,26 @@
-
 use spring_db;
 
 truncate posts;
-insert into posts (body, title) values ('Oldsmobile', 'Silhouette');
-insert into posts (body, title) values ('Land Rover', 'LR2');
-insert into posts (body, title) values ('Aston Martin', 'V8 Vantage');
-insert into posts (body, title) values ('Toyota', 'Celica');
-insert into posts (body, title) values ('Ford', 'Ranger');
-insert into posts (body, title) values ('Cadillac', 'SRX');
-insert into posts (body, title) values ('Hummer', 'H1');
-insert into posts (body, title) values ('GMC', 'Canyon');
-insert into posts (body, title) values ('Mercedes-Benz', 'S-Class');
-insert into posts (body, title) values ('GMC', '2500');
-insert into posts (body, title) values ('Cadillac', 'XLR');
-insert into posts (body, title) values ('Panoz', 'Esperante');
-insert into posts (body, title) values ('Chevrolet', 'Camaro');
-insert into posts (body, title) values ('Lexus', 'RX Hybrid');
-insert into posts (body, title) values ('Spyker', 'C8 Double 12 S');
-insert into posts (body, title) values ('Chevrolet', 'Cobalt SS');
-insert into posts (body, title) values ('Infiniti', 'Q');
-insert into posts (body, title) values ('Eagle', 'Talon');
-insert into posts (body, title) values ('Dodge', 'D250 Club');
-insert into posts (body, title) values ('Mercury', 'Cougar');
-insert into posts (body, title) values ('BMW', '545');
-insert into posts (body, title) values ('Land Rover', 'Freelander');
-insert into posts (body, title) values ('Ford', 'Galaxie');
-insert into posts (body, title) values ('Volvo', 'XC90');
-insert into posts (body, title) values ('MINI', 'Cooper');
-insert into posts (body, title) values ('Ford', 'Econoline E150');
-insert into posts (body, title) values ('Acura', 'Legend');
-insert into posts (body, title) values ('Kia', 'Mentor');
-insert into posts (body, title) values ('Audi', 'TT');
-insert into posts (body, title) values ('Porsche', 'Boxster');
-insert into posts (body, title) values ('Volvo', 'V70');
-insert into posts (body, title) values ('Saturn', 'Sky');
-insert into posts (body, title) values ('Ford', 'Club Wagon');
-insert into posts (body, title) values ('Toyota', 'Tacoma');
-insert into posts (body, title) values ('Jeep', 'Grand Cherokee');
-insert into posts (body, title) values ('Chevrolet', 'Express 2500');
-insert into posts (body, title) values ('Lincoln', 'Zephyr');
-insert into posts (body, title) values ('GMC', '1500 Club Coupe');
-insert into posts (body, title) values ('Bentley', 'Brooklands');
-insert into posts (body, title) values ('Mercedes-Benz', 'S-Class');
-insert into posts (body, title) values ('Jeep', 'Wrangler');
-insert into posts (body, title) values ('Mercedes-Benz', 'C-Class');
-insert into posts (body, title) values ('Dodge', 'Ram Van 1500');
-insert into posts (body, title) values ('Chrysler', 'Crossfire');
-insert into posts (body, title) values ('Mitsubishi', 'Starion');
-insert into posts (body, title) values ('Pontiac', 'Bonneville');
-insert into posts (body, title) values ('Scion', 'xD');
-insert into posts (body, title) values ('Lamborghini', 'Gallardo');
-insert into posts (body, title) values ('Ford', 'Focus');
-insert into posts (body, title) values ('Audi', 'Q5');
-insert into posts (body, title) values ('Buick', 'Regal');
-insert into posts (body, title) values ('Toyota', 'MR2');
-insert into posts (body, title) values ('Cadillac', 'Fleetwood');
-insert into posts (body, title) values ('Toyota', 'Xtra');
-insert into posts (body, title) values ('GMC', 'Savana 2500');
-insert into posts (body, title) values ('Kia', 'Sephia');
-insert into posts (body, title) values ('Chevrolet', 'Express 1500');
-insert into posts (body, title) values ('Dodge', 'Ram 1500');
-insert into posts (body, title) values ('Hummer', 'H2');
-insert into posts (body, title) values ('Lexus', 'SC');
-insert into posts (body, title) values ('Audi', 'TT');
-insert into posts (body, title) values ('Chrysler', 'Town & Country');
-insert into posts (body, title) values ('Lexus', 'LS');
-insert into posts (body, title) values ('Cadillac', 'Escalade');
-insert into posts (body, title) values ('Aston Martin', 'Vantage');
-insert into posts (body, title) values ('Cadillac', 'STS');
-insert into posts (body, title) values ('Saab', '9-3');
-insert into posts (body, title) values ('Mazda', '929');
-insert into posts (body, title) values ('Pontiac', 'GTO');
-insert into posts (body, title) values ('BMW', '525');
-insert into posts (body, title) values ('Pontiac', 'Bonneville');
-insert into posts (body, title) values ('Buick', 'Lucerne');
-insert into posts (body, title) values ('Infiniti', 'G25');
-insert into posts (body, title) values ('Land Rover', 'Range Rover');
-insert into posts (body, title) values ('Mercedes-Benz', 'SLK-Class');
-insert into posts (body, title) values ('Nissan', 'Titan');
-insert into posts (body, title) values ('Dodge', 'Ram Van 1500');
-insert into posts (body, title) values ('Ford', 'Explorer Sport Trac');
-insert into posts (body, title) values ('Saturn', 'S-Series');
-insert into posts (body, title) values ('Pontiac', 'Firebird');
-insert into posts (body, title) values ('Jaguar', 'XJ Series');
-insert into posts (body, title) values ('Dodge', 'Ram Wagon B250');
-insert into posts (body, title) values ('Ford', 'F-Series');
-insert into posts (body, title) values ('Ford', 'E350');
-insert into posts (body, title) values ('Chevrolet', 'Sportvan G20');
-insert into posts (body, title) values ('Chevrolet', 'Blazer');
-insert into posts (body, title) values ('Bentley', 'Continental Super');
-insert into posts (body, title) values ('Ford', 'Escort ZX2');
-insert into posts (body, title) values ('Mercury', 'Grand Marquis');
-insert into posts (body, title) values ('Dodge', 'Durango');
-insert into posts (body, title) values ('Nissan', 'Maxima');
-insert into posts (body, title) values ('Dodge', 'Neon');
-insert into posts (body, title) values ('Lincoln', 'Navigator');
-insert into posts (body, title) values ('Mitsubishi', 'Mighty Max');
-insert into posts (body, title) values ('Ford', 'Windstar');
-insert into posts (body, title) values ('Acura', 'CL');
-insert into posts (body, title) values ('Ford', 'E150');
-insert into posts (body, title) values ('Audi', 'S8');
-insert into posts (body, title) values ('Chevrolet', 'Corvette');
-insert into posts (body, title) values ('Mazda', 'Millenia');
+insert into posts (body, title)
+values ('Oldsmobile', 'Silhouette');
+insert into posts (body, title)
+values ('Land Rover', 'LR2');
+insert into posts (body, title)
+values ('Aston Martin', 'V8 Vantage');
+insert into posts (body, title)
+values ('Toyota', 'Celica');
+insert into posts (body, title)
+values ('Ford', 'Ranger');
+insert into posts (body, title)
+values ('Cadillac', 'SRX');
+
+insert into post_details(id, is_awesome, history_of_post, topic_description)
+values (6, 1, 'Sixth post on my Spring-Blog. Great day to start blogging on !',
+        'Sixth post');
+
+update posts
+set post_details_id = 6
+where id = 6;
+
+
+

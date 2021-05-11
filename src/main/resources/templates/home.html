@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
-</head>
-<body>
-
-<h1>Hello, <span th:text="${name}"> World</span></h1>
-
+<head th:replace="fragments/header :: main-header('Home')"></head>
+<body style="background-color: blanchedalmond">
+<nav th:replace="fragments/navbar :: main-navbar"></nav>
+<div class="d-flex justify-content-center mt-4">
+    <h1>Hello, From Spring Blog<span th:text="${name}"> World</span></h1>
+</div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
 </html>
