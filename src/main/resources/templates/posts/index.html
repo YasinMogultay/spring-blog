@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" spring lang="en">
+<html xmlns:th="http://www.thymeleaf.org" spring lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/header :: main-header('Show All Posts Page')"></head>
 <body>
 <nav th:replace="fragments/navbar :: main-navbar"></nav>
@@ -10,8 +10,16 @@
         <div class="card-body">
             <h5 class="card-title">Post Body: <span th:text="${post.body}"</span></h5>
             <h5 class="card-text">Post Id: <span th:text="${post.id}"></span></h5>
+            <h5 class="card-text">User Id: <span th:text="${post.user.id}"></span></h5>
         </div>
     </div>
+</div>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
 </div>
 <footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
