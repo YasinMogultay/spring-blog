@@ -7,5 +7,6 @@
     <h1>Hello, From Spring Blog<span th:text="${name}"> World</span></h1>
 </div>
 <footer th:replace="fragments/footer :: main-footer"></footer>
+<th:block th:replace="fragments/scripts :: scripts" />
 </body>
 </html>
